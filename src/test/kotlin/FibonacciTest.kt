@@ -1,7 +1,7 @@
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 
-class Fibonacci : StringSpec({
+class FibonacciTest : StringSpec({
     "fib -1 should be 0" {
         fibonacci(0) shouldBe 0
     }
