@@ -1,3 +1,5 @@
+package ch2
+
 /*
  Exercise 2.1 / page 20
  Write a recursive function to get the nth Fibonacci number (https://www.britannica .com/science/Fibonacci-number).
