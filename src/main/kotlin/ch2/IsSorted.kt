@@ -1,3 +1,5 @@
+package ch2
+
 /*
 Exercise 2.2 / page 25
 Implement isSorted, which checks whether a singly linked list List<A> is sorted according to a given comparison
