@@ -14,5 +14,6 @@ tasks.withType<Test>().configureEach {
 }
 
 dependencies {
-    implementation(libs.bundles.kotest)
+    implementation(libs.coroutines)
+    implementation(libs.bundles.junit5)
 }
