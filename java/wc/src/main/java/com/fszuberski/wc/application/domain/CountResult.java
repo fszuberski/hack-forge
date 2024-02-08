@@ -14,7 +14,15 @@ public class CountResult {
         return resultsPerType.entrySet();
     }
 
+
     public static CountResult of(Map<CountType, Long> resultsPerType) {
         return new CountResult(resultsPerType);
+    }
+
+    @Override
+    public String toString() {
+        return "CountResult{" +
+                "resultsPerType=" + resultsPerType +
+                '}';
     }
 }
