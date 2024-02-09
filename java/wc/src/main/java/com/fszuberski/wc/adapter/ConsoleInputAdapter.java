@@ -45,7 +45,7 @@ public class ConsoleInputAdapter {
                 }
             };
 
-            resultOpt = countUseCase.count(bufferedInputSupplier, Set.of(CountType.BYTES, CountType.CHARACTERS, CountType.LINES));
+            resultOpt = countUseCase.count(bufferedInputSupplier, Set.of(CountType.BYTES, CountType.CHARACTERS, CountType.WORDS, CountType.LINES));
         }
 
         resultOpt.ifPresentOrElse(
