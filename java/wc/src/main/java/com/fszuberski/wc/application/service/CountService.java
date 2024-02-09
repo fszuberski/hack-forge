@@ -4,6 +4,7 @@ import com.fszuberski.wc.application.domain.CountResult;
 import com.fszuberski.wc.application.domain.CountType;
 import com.fszuberski.wc.application.port.in.CountUseCase;
 
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.function.*;
 import java.util.stream.Collector;
@@ -28,12 +29,29 @@ public class CountService implements CountUseCase {
 
         return Optional.of(
                 StreamSupport.stream(spliterator, false)
-                .collect(counting(types)));
+                        .collect(counting(types))
+        );
     }
 
     public static class MutableCountResult implements Consumer<String> {
         private final Set<CountType> countTypes;
         private final Map<CountType, Long> resultsPerType;
+
+        private static final Map<CountType, BiConsumer<String, Map<CountType, Long>>> ops = Map.of(
+
+                CountType.BYTES, (line, results) ->
+                        results.put(CountType.BYTES, results.getOrDefault(CountType.BYTES, 0L) + line.getBytes(StandardCharsets.UTF_8).length),
+
+                CountType.CHARACTERS, (line, results) ->
+                        results.put(CountType.CHARACTERS, results.getOrDefault(CountType.CHARACTERS, 0L) + line.length()),
+
+                CountType.WORDS, (line, results) ->
+                        results.put(CountType.WORDS, results.getOrDefault(CountType.WORDS, 0L) + line.trim().split("\\s+").length),
+
+                CountType.LINES, (line, results) ->
+                        results.put(CountType.LINES, results.getOrDefault(CountType.LINES, 0L) + 1)
+
+        );
 
         public MutableCountResult(Set<CountType> countTypes) {
             this.countTypes = countTypes;
@@ -46,8 +64,10 @@ public class CountService implements CountUseCase {
 
         @Override
         public void accept(String line) {
-            resultsPerType.put(CountType.LINES, resultsPerType.getOrDefault(CountType.LINES, 0L) + 1);
-            // TODO do the actual counts here
+            countTypes.stream()
+                    .map(ops::get)
+                    .filter(Objects::nonNull)
+                    .forEach(op -> op.accept(line, resultsPerType));
         }
 
         public MutableCountResult combine(MutableCountResult other) {
