@@ -1,12 +1,12 @@
 package com.fszuberski.wc.adapter;
 
+import com.fszuberski.wc.application.service.BufferedInputSupplier;
 import com.fszuberski.wc.application.domain.CountResult;
 import com.fszuberski.wc.application.domain.CountType;
 import com.fszuberski.wc.application.port.in.CountUseCase;
 
 import java.io.*;
 import java.util.Arrays;
-import java.util.Optional;
 import java.util.Set;
 import java.util.function.Supplier;
 
@@ -22,8 +22,8 @@ public class ConsoleInputAdapter {
         Arrays.stream(arguments).forEach(System.out::println);
         System.out.println("---");
 
-        final Supplier<String> bufferedInputSupplier;
-        final Optional<CountResult> resultOpt;
+        final Supplier<String> inputSupplier;
+        final CountResult result;
 
 //        File file = new File("");
 //        InputStream inputStream = new FileInputStream(file);
@@ -37,7 +37,7 @@ public class ConsoleInputAdapter {
         try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(inputStream))) {
 
-            bufferedInputSupplier = () -> {
+            inputSupplier = () -> {
                 try {
                     return reader.readLine();
                 } catch (IOException e) {
@@ -45,13 +45,9 @@ public class ConsoleInputAdapter {
                 }
             };
 
-            resultOpt = countUseCase.count(bufferedInputSupplier, Set.of(CountType.BYTES, CountType.CHARACTERS, CountType.WORDS, CountType.LINES));
+            result = countUseCase.count(BufferedInputSupplier.from(inputSupplier), Set.of(CountType.BYTES, CountType.CHARACTERS, CountType.WORDS, CountType.LINES));
         }
 
-        resultOpt.ifPresentOrElse(
-                System.out::println,
-                () -> System.out.println("Result is empty")
-        );
-
+        System.out.println(result);
     }
 }
