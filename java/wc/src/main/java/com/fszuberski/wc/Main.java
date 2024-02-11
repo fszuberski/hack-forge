@@ -1,20 +1,18 @@
 package com.fszuberski.wc;
 
-import com.fszuberski.wc.adapter.ConsoleInputAdapter;
+import com.fszuberski.wc.adapter.cli.CommandLineAdapter;
 import com.fszuberski.wc.application.port.in.CountUseCase;
 import com.fszuberski.wc.application.service.CountService;
 
+import java.io.IOException;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // simple di
         final CountUseCase countUseCase = new CountService();
-        final ConsoleInputAdapter consoleInputAdapter = new ConsoleInputAdapter(countUseCase);
+        final CommandLineAdapter commandLineAdapter = new CommandLineAdapter(countUseCase);
 
         // run
-        try {
-            consoleInputAdapter.readInputAndCount(args);
-        } catch (Throwable th) {
-            th.printStackTrace();
-        }
+        commandLineAdapter.readInputAndCount(args);
     }
 }

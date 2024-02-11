@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "com.fszuberski"
-version = "1.0-SNAPSHOT"
+version = "0.9"
 
 repositories {
     mavenCentral()
@@ -11,6 +11,14 @@ repositories {
 
 dependencies {
     testImplementation(libs.bundles.junit5)
+}
+
+tasks.jar {
+    manifest {
+        attributes(mapOf(
+            "Main-Class" to "com.fszuberski.wc.Main"
+        ))
+    }
 }
 
 tasks.test {
