@@ -17,7 +17,7 @@ public class BufferedInputSupplier extends Spliterators.AbstractSpliterator<Stri
     }
 
     public Stream<String> stream() {
-        return stream(false);
+        return stream(true);
     }
 
     public Stream<String> stream(boolean parallel) {
