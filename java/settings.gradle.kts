@@ -8,7 +8,8 @@ dependencyResolutionManagement {
 
             library("junit5-api", "org.junit.jupiter:junit-jupiter-api:$junitVersion")
             library("junit5-engine", "org.junit.jupiter:junit-jupiter-engine:$junitVersion")
-            bundle("junit5", listOf("junit5-api", "junit5-engine"))
+            library("junit5-params", "org.junit.jupiter:junit-jupiter-params:$junitVersion")
+            bundle("junit5", listOf("junit5-api", "junit5-engine", "junit5-params"))
         }
     }
 }

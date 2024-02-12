@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.function.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collector;
 
 public class CountCollector {
@@ -54,11 +55,22 @@ public class CountCollector {
                 CountType.CHARACTERS, (line, results) ->
                         results.put(CountType.CHARACTERS, results.getOrDefault(CountType.CHARACTERS, 0L) + line.length()),
 
-                CountType.WORDS, (line, results) ->
-                        results.put(CountType.WORDS, results.getOrDefault(CountType.WORDS, 0L) + line.trim().split("\\s+").length),
+                CountType.WORDS, (line, results) -> {
+                    var wordCount = line.trim().length() > 0
+                            ? line.trim().split("\\s+").length
+                            : 0;
 
-                CountType.LINES, (line, results) ->
-                        results.put(CountType.LINES, results.getOrDefault(CountType.LINES, 0L) + 1)
+                    results.put(CountType.WORDS, results.getOrDefault(CountType.WORDS, 0L) + wordCount);
+                },
+
+                CountType.LINES, (line, results) -> {
+                    var newLineCharactersCount = Pattern.compile("\r\n|\r|\n")
+                            .matcher(line)
+                            .results()
+                            .count();
+                    results.put(CountType.LINES, results.getOrDefault(CountType.LINES, 0L) + newLineCharactersCount + 1);
+                }
+
 
         );
 
