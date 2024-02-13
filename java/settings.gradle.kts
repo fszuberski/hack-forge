@@ -4,7 +4,10 @@ include("wc")
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
-            val junitVersion = "5.10.1"
+            val mockitoVersion = "5.10.0"
+            val junitVersion = "5.10.2"
+
+            library("mockito", "org.mockito:mockito-core:$mockitoVersion")
 
             library("junit5-api", "org.junit.jupiter:junit-jupiter-api:$junitVersion")
             library("junit5-engine", "org.junit.jupiter:junit-jupiter-engine:$junitVersion")

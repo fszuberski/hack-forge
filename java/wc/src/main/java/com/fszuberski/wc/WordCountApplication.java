@@ -6,7 +6,7 @@ import com.fszuberski.wc.application.service.CountService;
 
 import java.io.IOException;
 
-public class Main {
+public class WordCountApplication {
     public static void main(String[] args) throws IOException {
         // simple di
         final CountUseCase countUseCase = new CountService();

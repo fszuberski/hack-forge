@@ -1,4 +1,4 @@
-package com.fszuberski.wc.adapter.cli;
+package com.fszuberski.wc.adapter.cli.exception;
 
 public class InvalidFlagException extends RuntimeException {
 

@@ -10,7 +10,6 @@ import java.util.function.Supplier;
 public class CommandLineAdapter {
     private final CountUseCase countUseCase;
 
-
     public CommandLineAdapter(CountUseCase countUseCase) {
         this.countUseCase = countUseCase;
     }
