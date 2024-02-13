@@ -1,5 +1,8 @@
 package com.fszuberski.wc.adapter.cli;
 
+import com.fszuberski.wc.adapter.cli.exception.FilePathNotProvidedException;
+import com.fszuberski.wc.adapter.cli.exception.InvalidFlagException;
+import com.fszuberski.wc.adapter.cli.exception.TooManyArgumentsException;
 import com.fszuberski.wc.application.domain.CountType;
 
 import java.util.Arrays;
@@ -28,11 +31,11 @@ public class CommandLineArguments {
                 .collect(partitioningBy(arg -> arg.startsWith("-")));
 
         if (partitioned.get(Boolean.FALSE).isEmpty()) {
-            throw new RuntimeException("File path must be provided.");
+            throw new FilePathNotProvidedException();
         }
 
         if (partitioned.get(Boolean.FALSE).size() > 1) {
-            throw new RuntimeException("Too many arguments provided.");
+            throw new TooManyArgumentsException();
         }
 
         this.filePath = partitioned.get(Boolean.FALSE)
