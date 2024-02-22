@@ -5,9 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.PrintStream;
+import java.io.*;
 import java.util.Map;
 import java.util.stream.Stream;
 
@@ -49,4 +47,10 @@ class WordCountApplicationIntegrationTest {
                 );
     }
 
+    @Test
+    public void crashesGivenExceptionThrown() {
+        var nonExistentFile = this.getClass().getClassLoader().getResource("doesnt-exist.txt");
+        assertThrows(IOException.class,
+                () -> WordCountApplication.main(new String[]{"-lcm", nonExistentFile.getPath()}));
+    }
 }
