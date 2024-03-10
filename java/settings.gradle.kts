@@ -1,5 +1,6 @@
 rootProject.name = "hack-forge-java"
 include("wc")
+include("grind")
 
 dependencyResolutionManagement {
     versionCatalogs {
