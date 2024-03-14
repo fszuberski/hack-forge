@@ -10,8 +10,8 @@ repositories {
 }
 
 dependencies {
-    testImplementation(libs.bundles.junit5)
-    testImplementation(libs.mockito)
+    implementation(libs.bundles.junit5)
+    implementation(libs.mockito)
 }
 
 tasks.test {
