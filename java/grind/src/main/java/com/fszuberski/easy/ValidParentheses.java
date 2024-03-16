@@ -1,4 +1,4 @@
-package com.fszuberski;
+package com.fszuberski.easy;
 
 // 20. Valid Parentheses
 // https://leetcode.com/problems/valid-parentheses

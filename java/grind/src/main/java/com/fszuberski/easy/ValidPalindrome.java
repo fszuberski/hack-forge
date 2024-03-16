@@ -1,4 +1,4 @@
-package com.fszuberski;
+package com.fszuberski.easy;
 
 // 125. Valid Palindrome
 // https://leetcode.com/problems/valid-palindrome/
