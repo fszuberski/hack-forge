@@ -1,8 +1,5 @@
 package com.fszuberski.easy;
 
-// 733. Flood Fill
-// https://leetcode.com/problems/flood-fill/
-
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -11,6 +8,9 @@ import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+// 733. Flood Fill
+// https://leetcode.com/problems/flood-fill/
 
 public class FloodFill {
     public int[][] floodFill(int[][] image, int sr, int sc, int color) {

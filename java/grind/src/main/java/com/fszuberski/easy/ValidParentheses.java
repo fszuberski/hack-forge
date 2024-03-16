@@ -1,8 +1,5 @@
 package com.fszuberski.easy;
 
-// 20. Valid Parentheses
-// https://leetcode.com/problems/valid-parentheses
-
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -11,6 +8,9 @@ import java.util.Stack;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+// 20. Valid Parentheses
+// https://leetcode.com/problems/valid-parentheses
 
 class ValidParentheses {
 
