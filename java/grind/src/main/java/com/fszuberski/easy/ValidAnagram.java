@@ -1,4 +1,4 @@
-package com.fszuberski;
+package com.fszuberski.easy;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
