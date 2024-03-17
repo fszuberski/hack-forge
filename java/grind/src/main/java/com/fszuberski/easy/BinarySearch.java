@@ -1,8 +1,5 @@
 package com.fszuberski.easy;
 
-// 704. Binary Search
-// https://leetcode.com/problems/binary-search
-
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -10,6 +7,9 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+// 704. Binary Search
+// https://leetcode.com/problems/binary-search
 
 public class BinarySearch {
 
