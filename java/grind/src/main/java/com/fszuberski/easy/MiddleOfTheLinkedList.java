@@ -10,30 +10,28 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-// 206. Reverse Linked List
-// https://leetcode.com/problems/reverse-linked-list
+// 876. Middle of the Linked List
+// https://leetcode.com/problems/middle-of-the-linked-list
 
-public class ReverseLinkedList {
+public class MiddleOfTheLinkedList {
 
-    ListNode reverseList(ListNode head) {
+    ListNode middleNode(ListNode head) {
         if (head == null) {
             return null;
         }
 
-        ListNode previous = null;
-        ListNode current = head;
-        ListNode next = head.next;
+        var slow = head;
+        var fast = head.next;
 
-        while (current != null) {
-            current.next = previous;
-            previous = current;
-            current = next;
-            if (next != null) {
-                next = next.next;
+        while (fast != null) {
+            slow = slow.next;
+            fast = fast.next;
+            if (fast != null) {
+                fast = fast.next;
             }
         }
 
-        return previous;
+        return slow;
     }
 
     static class ListNode {
@@ -83,12 +81,12 @@ public class ReverseLinkedList {
     }
 
 
-    static class ReverseLinkedListTest {
+    static class MiddleOfLinkedListTest {
 
         @ParameterizedTest
         @MethodSource("testCases")
         void test(ListNode head, ListNode expectedResult) {
-            final var result = new ReverseLinkedList().reverseList(head);
+            final var result = new MiddleOfTheLinkedList().middleNode(head);
             assertEquals(expectedResult, result);
         }
 
@@ -96,11 +94,11 @@ public class ReverseLinkedList {
             return Stream.of(
                     Arguments.of(
                             ListNode.fromList(List.of(1, 2, 3, 4, 5)),
-                            ListNode.fromList(List.of(5, 4, 3, 2, 1))
+                            ListNode.fromList(List.of(3, 4, 5))
                     ),
                     Arguments.of(
-                            ListNode.fromList(List.of(1, 2)),
-                            ListNode.fromList(List.of(2, 1))
+                            ListNode.fromList(List.of(1, 2, 3, 4, 5, 6)),
+                            ListNode.fromList(List.of(4, 5, 6))
                     ),
                     Arguments.of(
                             ListNode.fromList(List.of()),
