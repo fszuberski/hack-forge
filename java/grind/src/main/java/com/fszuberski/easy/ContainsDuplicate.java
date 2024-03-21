@@ -32,8 +32,8 @@ public class ContainsDuplicate {
 
         @ParameterizedTest
         @MethodSource("testCases")
-        void test(int[] image, boolean expectedResult) {
-            final var result = new ContainsDuplicate().containsDuplicate(image);
+        void test(int[] nums, boolean expectedResult) {
+            final var result = new ContainsDuplicate().containsDuplicate(nums);
             assertEquals(expectedResult, result);
         }
 
