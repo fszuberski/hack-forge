@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MaximumDepthOfBinaryTree {
 
-    public int maxDepth(TreeNode root) {
+    int maxDepth(TreeNode root) {
         if (root == null) {
             return 0;
         }
@@ -21,7 +21,7 @@ public class MaximumDepthOfBinaryTree {
         return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
     }
 
-    public static class TreeNode {
+    static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
