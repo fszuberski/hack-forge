@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: urlshortner
+
+urlshortner:
+  baseUrl: ${URLSHORTNER_BASE_URL:http://localhost:8080}
+
+
