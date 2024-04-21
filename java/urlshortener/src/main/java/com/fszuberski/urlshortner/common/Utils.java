@@ -40,6 +40,5 @@ public class Utils {
         return str != null
                 ? str.charAt(str.length() - 1)
                 : null;
-
     }
 }

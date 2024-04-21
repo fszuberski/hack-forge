@@ -9,15 +9,16 @@ public class Validation {
         validate(value, IllegalArgumentException::new);
     }
 
-    public static void validate(boolean value, Supplier<RuntimeException> exceptionSupplier) {
+    public static void validate(boolean value, Supplier<? extends RuntimeException> exceptionSupplier) {
         if (!value) {
             throw exceptionSupplier.get();
         }
     }
 
-    public static boolean isValidUri(String uri) {
+    public static boolean isValidUrl(String url) {
         try {
-            new URI(uri);
+            //noinspection ResultOfMethodCallIgnored
+            new URI(url).toURL();
         } catch (Exception e) {
             return false;
         }
