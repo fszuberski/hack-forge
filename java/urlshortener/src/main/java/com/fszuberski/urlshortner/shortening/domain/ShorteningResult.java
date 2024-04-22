@@ -1,6 +1,6 @@
 package com.fszuberski.urlshortner.shortening.domain;
 
-import java.net.URI;
+import java.net.URL;
 
-public record ShorteningResult(URI longUri, URI shortUri) {
+public record ShorteningResult(URL longUrl, URL shortUrl) {
 }
