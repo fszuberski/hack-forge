@@ -24,7 +24,7 @@ class ShorteningServiceTest {
     private ShorteningService shorteningService;
     private SaveShortenedUrlPort saveShortenedUrlPort;
     private final ShorteningConfiguration configuration =
-            new ShorteningConfiguration("https://urlshortner.com/", 10, 16);
+            new ShorteningConfiguration("https://urlshortener.com/", 10, 16);
 
     @BeforeEach
     public void beforeEach() {

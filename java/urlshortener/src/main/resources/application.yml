@@ -1,9 +1,9 @@
 spring:
   application:
-    name: urlshortner
+    name: urlshortener
 
 urlshortener:
-  base-url: ${URLSHORTNER_BASE_URL:http://localhost:8080/}
+  base-url: ${URLSHORTENER_BASE_URL:http://localhost:8080/}
   key-length: 10
   max-attempts-on-collisions: 16
 
