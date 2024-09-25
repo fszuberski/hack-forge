@@ -6,8 +6,10 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static com.fszuberski.snippets.Util.peopleList;
+import static java.util.Comparator.comparing;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -24,6 +26,22 @@ public class Sorted {
         };
     }
 
+    public List<Person> sortedPeopleFluentComparisons(Order order) {
+        if (order == null) {
+            throw new IllegalArgumentException("order cannot be null");
+        }
+
+        var compositeAscendingComparator = Stream
+                .of(comparing(Person::age), comparing(Person::name))
+                .reduce(Comparator::thenComparing)
+                .get();
+
+        return switch (order) {
+            case Order.ASC -> sortedPeople(compositeAscendingComparator);
+            case Order.DESC -> sortedPeople(compositeAscendingComparator.reversed());
+        };
+    }
+
     private List<Person> sortedPeople(Comparator<Person> peopleComparator) {
         return peopleList.stream()
                 .sorted(peopleComparator)
@@ -37,41 +55,80 @@ public class Sorted {
 
     public static class SortedTest {
 
-        private Sorted sorted;
+        public static class SingleComparisons {
 
-        @BeforeEach
-        public void beforeEach() {
-            this.sorted = new Sorted();
+            private Sorted sorted;
+
+            @BeforeEach
+            public void beforeEach() {
+                this.sorted = new Sorted();
+            }
+
+            @Test
+            public void shouldReturnSortedPeopleAscendingOrder() {
+                var result = sorted.sortedPeople(Order.ASC);
+
+                assertEquals(4, result.size());
+                assertEquals("Daniel", result.get(0).name());
+                assertEquals("Emma", result.get(1).name());
+                assertEquals("Cloe", result.get(2).name());
+                assertEquals("Cezary", result.get(3).name());
+            }
+
+            @Test
+            public void shouldReturnSortedPeopleDescendingOrder() {
+                var result = sorted.sortedPeople(Order.DESC);
+
+                assertEquals(4, result.size());
+                assertEquals("Cezary", result.get(0).name());
+                assertEquals("Cloe", result.get(1).name());
+                assertEquals("Emma", result.get(2).name());
+                assertEquals("Daniel", result.get(3).name());
+            }
+
+            @Test
+            public void shouldThrowExceptionGivenNullOrder() {
+                assertThrows(IllegalArgumentException.class,
+                        () -> sorted.sortedPeople((Order) null));
+            }
         }
 
+        public static class MultipleAndFluentComparisons {
 
-        @Test
-        public void shouldReturnSortedPeopleAscendingOrder() {
-            var result = sorted.sortedPeople(Order.ASC);
+            private Sorted sorted;
 
-            assertEquals(4, result.size());
-            assertEquals("Daniel", result.get(0).name());
-            assertEquals("Emma", result.get(1).name());
-            assertEquals("Cloe", result.get(2).name());
-            assertEquals("Cezary", result.get(3).name());
+            @BeforeEach
+            public void beforeEach() {
+                this.sorted = new Sorted();
+            }
+
+            @Test
+            public void shouldReturnSortedPeopleAscendingOrder() {
+                var result = sorted.sortedPeopleFluentComparisons(Order.ASC);
+
+                assertEquals(4, result.size());
+                assertEquals("Daniel", result.get(0).name());
+                assertEquals("Emma", result.get(1).name());
+                assertEquals("Cloe", result.get(2).name());
+                assertEquals("Cezary", result.get(3).name());
+            }
+
+            @Test
+            public void shouldReturnSortedPeopleDescendingOrder() {
+                var result = sorted.sortedPeopleFluentComparisons(Order.DESC);
+
+                assertEquals(4, result.size());
+                assertEquals("Cezary", result.get(0).name());
+                assertEquals("Cloe", result.get(1).name());
+                assertEquals("Emma", result.get(2).name());
+                assertEquals("Daniel", result.get(3).name());
+            }
+
+            @Test
+            public void shouldThrowExceptionGivenNullOrder() {
+                assertThrows(IllegalArgumentException.class,
+                        () -> sorted.sortedPeople((Order) null));
+            }
         }
-
-        @Test
-        public void shouldReturnSortedPeopleDescendingOrder() {
-            var result = sorted.sortedPeople(Order.DESC);
-
-            assertEquals(4, result.size());
-            assertEquals("Cezary", result.get(0).name());
-            assertEquals("Cloe", result.get(1).name());
-            assertEquals("Emma", result.get(2).name());
-            assertEquals("Daniel", result.get(3).name());
-        }
-
-        @Test
-        public void shouldThrowExceptionGivenNullOrder() {
-            assertThrows(IllegalArgumentException.class,
-                    () -> sorted.sortedPeople((Order) null));
-        }
-
     }
 }
