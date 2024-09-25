@@ -1,4 +1,4 @@
-package com.fszuberski.snippets;
+package com.fszuberski.snippets.core;
 
 import org.junit.jupiter.api.Test;
 
