@@ -1,4 +1,5 @@
 rootProject.name = "hack-forge-java"
+include("bookstore")
 include("wc")
 include("grind")
 include("urlshortener")
@@ -6,12 +7,14 @@ include("urlshortener")
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
+            val commonsCodecVersion = "1.16.1"
+            val commonsLangVersion = "3.14.0"
             val mockitoVersion = "5.10.0"
             val junitVersion = "5.10.2"
             val lombokVersion = "1.18.32"
 
-            library("commons-codec", "commons-codec:commons-codec:1.16.1", )
-            library("commons-lang3", "org.apache.commons:commons-lang3:3.14.0")
+            library("commons-codec", "commons-codec:commons-codec:$commonsCodecVersion")
+            library("commons-lang3", "org.apache.commons:commons-lang3:$commonsLangVersion")
 
             library("lombok", "org.projectlombok:lombok:$lombokVersion")
 
