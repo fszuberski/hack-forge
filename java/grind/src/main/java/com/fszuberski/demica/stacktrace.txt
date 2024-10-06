@@ -1,0 +1,18 @@
+org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection
+        at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:84)
+        at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:378)
+        at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:466)
+        at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:476)
+        at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:509)
+        at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:516)
+        at db.migration.common.V2024_08_14_09_30__DecoupleProgrammeLimitSetIdFromProgrammeIdMigrationIntegrationSpec.getProgrammeLimitSetAggregate(V2024_08_14_09_30__DecoupleProgrammeLimitSetIdFromProgrammeIdMigrationIntegrationSpec.groovy:454)
+        at db.migration.common.V2024_08_14_09_30__DecoupleProgrammeLimitSetIdFromProgrammeIdMigrationIntegrationSpec.should not crash if programme limit set aggregate is empty2(V2024_08_14_09_30__DecoupleProgrammeLimitSetIdFromProgrammeIdMigrationIntegrationSpec.groovy:182)
+    Caused by: java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30003ms.
+        at com.zaxxer.hikari.pool.HikariPool.createTimeoutException(HikariPool.java:696)
+        at com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:181)
+        at com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:146)
+        at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:128)
+        at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:160)
+        at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:118)
+        at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:81)
+        ... 7 more
