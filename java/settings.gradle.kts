@@ -3,6 +3,7 @@ include("bookstore")
 include("wc")
 include("grind")
 include("urlshortener")
+include("multithreading")
 
 dependencyResolutionManagement {
     versionCatalogs {
