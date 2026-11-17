@@ -5,10 +5,11 @@ Personal project for learning different programming languages and concepts.
 
 ## Java
 
-Requires a locally installed JDK 25; all five modules use Java 25 toolchains.
+Requires a locally installed JDK 25; all six modules use Java 25 toolchains.
 Run `./java/gradlew -p java assemble` from the repository root.
 
 - [Multithreading refresher](java/multithreading/README.md) — theory and 32 hands-on concurrency exercises.
+- [Rate-limiter interview starter](java/interview-rate-limiter/README.md) — unfinished senior Java exercise with opt-in acceptance and test-repair tasks.
 
 ## Kotlin
 

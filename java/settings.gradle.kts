@@ -4,6 +4,7 @@ include("wc")
 include("grind")
 include("urlshortener")
 include("multithreading")
+include("interview-rate-limiter")
 
 dependencyResolutionManagement {
     versionCatalogs {
