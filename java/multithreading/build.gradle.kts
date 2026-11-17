@@ -7,7 +7,7 @@ version = "1.0"
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(25)
     }
 }
 
@@ -59,6 +59,6 @@ tasks.register<JavaExec>("diagnosticDemo") {
     classpath = sourceSets.main.get().runtimeClasspath
     mainClass = "com.fszuberski.multithreading.diagnostics.ContendedServiceDemo"
     javaLauncher = javaToolchains.launcherFor {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(25)
     }
 }

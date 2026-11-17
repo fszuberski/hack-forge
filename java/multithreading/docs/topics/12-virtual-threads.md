@@ -2,8 +2,8 @@
 
 ## Theory
 
-Java 21 virtual threads are lightweight JVM-managed threads, scheduled onto carrier
-platform threads. Many supported blocking operations unmount a virtual thread,
+Virtual threads, final since Java 21, are lightweight JVM-managed threads, scheduled
+onto carrier platform threads. Many supported blocking operations unmount a virtual thread,
 freeing the carrier. They make thread-per-request blocking code scalable for
 I/O-heavy work; they do not speed up CPU computation or increase database capacity.
 
@@ -14,16 +14,18 @@ admission control, and request deadlines remain necessary.
 
 **Version matters:** on JDK 21, blocking while holding a synchronized monitor can
 pin a carrier; native/foreign calls can also cause pinning. JDK 24's JEP 491 removes
-the monitor-related pinning limitation, not every possible source of pinning. Do
-not teach "synchronized always pins virtual threads" as a timeless rule. On 21 use
+the monitor-related pinning limitation, including on this course's JDK 25, not every
+possible source of pinning. Do not teach "synchronized always pins virtual threads"
+as a timeless rule. On 21 use
 JFR or `-Djdk.tracePinnedThreads=full` to investigate, and choose lock designs from
 evidence, not blanket rewrites.
 
 ThreadLocal is supported, but per-thread caches/resources can become very expensive
 with task-per-thread execution. Clean request context in finally, don't leak it into
 unrelated callbacks, and avoid using it to cache scarce connections per virtual
-thread. Structured concurrency and scoped values are outside this Java 21
-non-preview course; understand the manual ownership they aim to simplify.
+thread. Scoped values are final in Java 25, but remain outside this course's
+curriculum. Structured concurrency remains preview in Java 25 and is also out of
+scope; understand the manual context and task ownership these APIs aim to simplify.
 
 ## Exercise A · Bounded virtual fan-out
 

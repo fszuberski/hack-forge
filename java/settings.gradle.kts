@@ -10,10 +10,10 @@ dependencyResolutionManagement {
         create("libs") {
             val commonsCodecVersion = "1.16.1"
             val commonsLangVersion = "3.14.0"
-            val mockitoVersion = "5.10.0"
+            val mockitoVersion = "5.24.0"
             val junitVersion = "5.10.2"
             val junitPlatformVersion = "1.10.2"
-            val lombokVersion = "1.18.32"
+            val lombokVersion = "1.18.48"
 
             library("commons-codec", "commons-codec:commons-codec:$commonsCodecVersion")
             library("commons-lang3", "org.apache.commons:commons-lang3:$commonsLangVersion")

@@ -18,8 +18,9 @@ collects results in completion order rather than submission order.
 Never block every worker waiting for child work queued to the same saturated
 pool: thread-starvation deadlock can occur without a monitor cycle. Document who
 owns an executor. `shutdown` rejects new tasks but lets accepted tasks finish;
-`shutdownNow` attempts interruption and returns tasks that never started. Java 21
-`ExecutorService.close()` waits for termination; it is not a bounded shutdown policy.
+`shutdownNow` attempts interruption and returns tasks that never started.
+`ExecutorService.close()` (available since Java 19) waits for termination; it is not
+a bounded shutdown policy.
 
 ## Exercise A · Bounded parallel mapper
 

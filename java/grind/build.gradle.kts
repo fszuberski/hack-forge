@@ -5,6 +5,12 @@ plugins {
 group = "com.fszuberski"
 version = "1.0"
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
 repositories {
     mavenCentral()
 }

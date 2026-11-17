@@ -1,6 +1,6 @@
 # Java multithreading refresher
 
-A hands-on course for senior Java interviews: **16 topics, 32 exercises**, Java 21,
+A hands-on course for senior Java interviews: **16 topics, 32 exercises**, Java 25,
 JUnit 5, no preview APIs. Budget roughly 1–3 hours per topic, longer for the pipelines
 and single-flight implementation. Work in order initially; all exercises are independent
 and do not depend on solutions from earlier topics.
@@ -8,12 +8,12 @@ and do not depend on solutions from earlier topics.
 ## Getting started
 
 Run from the repository's `java/` directory. The Gradle 9.9.1 wrapper supports
-JDK 17–27 runtimes, including JDK 25. **Use JDK 21 for the full Java build**;
-the module also requests a Java 21 toolchain. Install JDK 21 locally (no automatic
+JDK 17–27 runtimes, including JDK 25. **Use JDK 25 for the full Java build**;
+all Java modules request a Java 25 toolchain. Install JDK 25 locally (no automatic
 JDK download is configured). For example, on Linux:
 
 ```sh
-export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+export JAVA_HOME=/usr/lib/jvm/java-25-openjdk
 export PATH="$JAVA_HOME/bin:$PATH"
 ./gradlew :multithreading:test
 ./gradlew :multithreading:exerciseTest --tests '*CancellableWorkerTest'
@@ -174,8 +174,8 @@ virtual threads.
 
 ## Primary references
 
-- [Java 21 concurrency package](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/package-summary.html)
-- [JLS §17: Threads and Locks](https://docs.oracle.com/javase/specs/jls/se21/html/jls-17.html)
+- [Java 25 concurrency package](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/package-summary.html)
+- [JLS §17: Threads and Locks](https://docs.oracle.com/javase/specs/jls/se25/html/jls-17.html)
 - [Virtual threads, JEP 444](https://openjdk.org/jeps/444)
 - [Monitor pinning change in JDK 24, JEP 491](https://openjdk.org/jeps/491)
 - [JMH](https://github.com/openjdk/jmh) and [jcstress](https://github.com/openjdk/jcstress)

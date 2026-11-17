@@ -17,7 +17,7 @@ cycle of ownership/waits suggests deadlock, not simply many waiters on one owner
 
 `ThreadMXBean` exposes platform-thread state and some ownable-synchronizer/deadlock
 diagnostics; it is **not a complete virtual-thread inventory**. For virtual-thread
-analysis on JDK 21, investigate `jcmd <pid> Thread.dump_to_file -format=json <file>`
+analysis on JDK 25, investigate `jcmd <pid> Thread.dump_to_file -format=json <file>`
 and JFR rather than assuming Thread.print/ThreadMXBean lists every virtual thread.
 Use JFR for lock contention/pinning/CPU evidence, JMH for microbenchmarking, and
 jcstress for allowed memory-model outcomes. None substitutes for an invariant proof.
@@ -57,7 +57,7 @@ Implement `diagnostics/ThreadDiagnostics.java`; run `*ThreadDiagnosticsTest`.
 Then run the supplied bounded **diagnosticDemo**, without needing either solution:
 
 ```sh
-# From java/, with JDK 21:
+# From java/, with JDK 25:
 ./gradlew :multithreading:diagnosticDemo
 # In a second terminal, use the demo's printed PID:
 jcmd <pid> Thread.print -l
