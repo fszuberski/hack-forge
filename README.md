@@ -16,3 +16,7 @@ Run `./java/gradlew -p java assemble` from the repository root.
 
 Both modules use stable Kotlin 2.4.21 (language/API 2.4), JDK 25, and JVM 25 bytecode.
 With `JAVA_HOME` pointing to JDK 25, run `./kotlin/gradlew -p kotlin build`.
+
+## Rust
+
+- [UUID CLI](rust/uuid/README.md) — generate a v4 UUID.
