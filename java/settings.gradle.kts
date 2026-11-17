@@ -5,6 +5,7 @@ include("grind")
 include("urlshortener")
 include("multithreading")
 include("interview-rate-limiter")
+include("interview-money-transfer")
 
 dependencyResolutionManagement {
     versionCatalogs {
