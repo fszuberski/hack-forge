@@ -4,8 +4,10 @@ import com.fszuberski.wc.application.domain.CountResult;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
 import java.io.*;
+import java.nio.file.Path;
 import java.util.Map;
 import java.util.stream.Stream;
 
@@ -48,9 +50,12 @@ class WordCountApplicationIntegrationTest {
     }
 
     @Test
-    public void crashesGivenExceptionThrown() {
-        var nonExistentFile = this.getClass().getClassLoader().getResource("doesnt-exist.txt");
+    public void shouldThrowIOExceptionGivenMissingFile(@TempDir Path tempDir) {
+        // given: a nonexistent file in a unique temporary directory
+        var nonExistentFile = tempDir.resolve("doesnt-exist.txt");
+
+        // when/then: counting the missing file throws an IOException
         assertThrows(IOException.class,
-                () -> WordCountApplication.main(new String[]{"-lcm", nonExistentFile.getPath()}));
+                () -> WordCountApplication.main(new String[]{"-lcm", nonExistentFile.toString()}));
     }
 }
