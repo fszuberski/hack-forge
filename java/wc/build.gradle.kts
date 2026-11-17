@@ -12,6 +12,7 @@ repositories {
 dependencies {
     testImplementation(libs.bundles.junit5)
     testImplementation(libs.mockito)
+    testRuntimeOnly(libs.junit.platform.launcher)
 }
 
 tasks.jar {

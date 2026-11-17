@@ -7,10 +7,10 @@ and do not depend on solutions from earlier topics.
 
 ## Getting started
 
-Run from the repository's `java/` directory. The existing Gradle 8.5 wrapper needs a
-compatible runtime: **use JDK 21**, even if your system defaults to a newer JDK.
-The module also requests a Java 21 toolchain; install JDK 21 locally (no automatic JDK
-download is configured). For example, on Linux:
+Run from the repository's `java/` directory. The Gradle 9.9.1 wrapper supports
+JDK 17–27 runtimes, including JDK 25. **Use JDK 21 for the full Java build**;
+the module also requests a Java 21 toolchain. Install JDK 21 locally (no automatic
+JDK download is configured). For example, on Linux:
 
 ```sh
 export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
