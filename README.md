@@ -19,4 +19,4 @@ With `JAVA_HOME` pointing to JDK 25, run `./kotlin/gradlew -p kotlin build`.
 
 ## Rust
 
-- [UUID CLI](rust/uuid/README.md) — generate a v4 UUID.
+- [UUID CLI](rust/uuid/README.md) — generate a v4 or v7 UUID.
