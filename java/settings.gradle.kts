@@ -6,6 +6,15 @@ include("urlshortener")
 include("multithreading")
 include("interview-rate-limiter")
 include("interview-money-transfer")
+include("interview-multithreading-ticket-office")
+include("interview-multithreading-room-booking")
+include("interview-multithreading-load-balancer")
+include("interview-multithreading-url-pool")
+include("interview-multithreading-account-ledger")
+include("interview-multithreading-ttl-cache")
+include("interview-multithreading-event-inbox")
+include("interview-multithreading-fx-quotes")
+include("interview-multithreading-auction")
 
 dependencyResolutionManagement {
     versionCatalogs {
